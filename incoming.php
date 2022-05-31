@@ -18,15 +18,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <?php include("inc/meta_tag.php");?>
     <title>Incoming Transaction :: <?php echo $app_name;?></title>
-	
+
 	<style>
-		@media screen {			
+		@media screen {
 			.Sembunyikan{
 				display: none;
-			}			
+			}
 		}
-	</style>	
-	<style>            
+	</style>
+	<style>
 		.autocomplete-suggestions {
 			border: 1px solid #999;
 			background: #FFF;
@@ -59,28 +59,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div id="main-wrapper">
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <div class="navbar-header">					
+                <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         <b>
                             <img src="title.png" width="32" height="32" alt="homepage" class="dark-logo" />
 	                    </b>
 						<span>
-							<?php echo $app_name;?>														
-						</span>						
-					</a>					
+							<?php echo $app_name;?>
+						</span>
+					</a>
                 </div>
-                <div class="navbar-collapse">					
+                <div class="navbar-collapse">
 					<?php include("inc/profile_right.php");?>
                 </div>
             </nav>
-        </header>        
-		<?php include("inc/sidebar.php");?>		
+        </header>
+		<?php include("inc/sidebar.php");?>
         <div class="page-wrapper">
-		
-		
+
+
 		<!--Content-->
-		
-		
+
+
 		<div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
@@ -92,7 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                             <li class="breadcrumb-item active">Transaksi Barang Masuk</li>
                         </ol>
-                    </div>										
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -101,9 +101,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <h5 class="card-subtitle"> Incoming <code>Transaction</code> </h5>
                             <div class="row">
                                 <div class="col-sm-12 col-xs-12">
-								
+
 									<?php
-										
+
 										if(!empty($_POST['tanggal'])){$tanggal=date('Y-m-d',strtotime($_POST['tanggal']));}else{if(!empty($_GET['tanggal'])){$tanggal=date('Y-m-d',strtotime($_GET['tanggal']));}else{$tanggal=date("Y-m-d");}}
 										if(!empty($_POST['faktur'])){$faktur=$_POST['faktur'];}else{if(!empty($_GET['faktur'])){$faktur=$_GET['faktur'];}else{$faktur="";}}
 										if(!empty($_POST['kode_supplier'])){$kode_supplier=$_POST['kode_supplier'];}else{if(!empty($_GET['kode_supplier'])){$kode_supplier=$_GET['kode_supplier'];}else{$kode_supplier="";}}
@@ -111,32 +111,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										if(!empty($_POST['address'])){$address=$_POST['address'];}else{if(!empty($_GET['address'])){$address=$_GET['address'];}else{$address="";}}
 										if(!empty($_POST['phone'])){$phone=$_POST['phone'];}else{if(!empty($_GET['phone'])){$phone=$_GET['phone'];}else{$phone="";}}
 										if(!empty($_POST['contact'])){$contact=$_POST['contact'];}else{if(!empty($_GET['contact'])){$contact=$_GET['contact'];}else{$contact="";}}
-										
+
 										if(!empty($_POST['kode'])){$kode=$_POST['kode'];}else{if(!empty($_GET['kode'])){$kode=$_GET['kode'];}else{$kode="";}}
 										if(!empty($_POST['jenis'])){$jenis=$_POST['jenis'];}else{if(!empty($_GET['jenis'])){$jenis=$_GET['jenis'];}else{$jenis="";}}
 										if(!empty($_POST['subgroup'])){$subgroup=$_POST['subgroup'];}else{if(!empty($_GET['subgroup'])){$subgroup=$_GET['subgroup'];}else{$subgroup="";}}
 										if(!empty($_POST['merk'])){$merk=$_POST['merk'];}else{if(!empty($_GET['merk'])){$merk=$_GET['merk'];}else{$merk="";}}
 										if(!empty($_POST['barang'])){$barang=$_POST['barang'];}else{if(!empty($_GET['barang'])){$barang=$_GET['barang'];}else{$barang="";}}
-										if(!empty($_POST['satuan'])){$satuan=$_POST['satuan'];}else{if(!empty($_GET['satuan'])){$satuan=$_GET['satuan'];}else{$satuan="";}}										
+										if(!empty($_POST['satuan'])){$satuan=$_POST['satuan'];}else{if(!empty($_GET['satuan'])){$satuan=$_GET['satuan'];}else{$satuan="";}}
 										if(!empty($_POST['qty'])){$qty=$_POST['qty'];}else{if(!empty($_GET['qty'])){$qty=$_GET['qty'];}else{$qty="";}}
 										if(!empty($_POST['harga_beli'])){$harga_beli=$_POST['harga_beli'];}else{if(!empty($_GET['harga_beli'])){$harga_beli=$_GET['harga_beli'];}else{$harga_beli="";}}
 										if(!empty($_POST['batch'])){$batch=$_POST['batch'];}else{if(!empty($_GET['batch'])){$batch=$_GET['batch'];}else{$batch="";}}
 										if(!empty($_POST['descr'])){$descr=$_POST['descr'];}else{if(!empty($_GET['descr'])){$descr=$_GET['descr'];}else{$descr="";}}
 
 										if(!empty($kode_supplier)){
-											$result = $con->query("Select * from SUPPLIER where kode='$kode_supplier'");											
+											$result = $con->query("Select * from SUPPLIER where kode='$kode_supplier'");
 											while($row = mysqli_fetch_assoc($result))
 											{
 												$supplier=$row["supplier"];
 												$address=$row["address"];
 												$phone=$row["phone"];
-												$contact=$row["contact"];		
-											}											
+												$contact=$row["contact"];
+											}
 										}
-										
+
 									?>
-									
-                                    <form method="POST" action="">										
+
+                                    <form method="POST" action="">
 										<input type="text" name="username" value="<?php echo $_SESSION["iss21"]["fullname"];?>" hidden required="required">
 										<div class="row">
 											<div class="col-md-4">
@@ -148,7 +148,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<div class="col-md-4">
 												<div class="form-group">
 													<label for="faktur">Nomor Faktur</label>
-													<input type="text" class="form-control" id="faktur" name="faktur" value="<?php  echo $faktur; ?>"  readonly>
+													<input type="text" class="form-control" id="faktur" name="faktur" value="<?php  echo $faktur; ?>" required>
 												</div>
 											</div>
 											<div class="col-md-4">
@@ -184,8 +184,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<input type="text" class="form-control" id="kode_supplier" name="kode_supplier" value="<?php  echo $kode_supplier; ?>" required="required"  readonly >
 												</div>
 											</div>
-										</div>										
-										<div class="row">										
+										</div>
+										<div class="row">
 											<div class="col-md-8">
 												<div class="form-group">
 													<label for="barang">Item Description</label>
@@ -241,29 +241,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<input type="text" class="form-control" id="descr" name="descr" value="<?php if(!empty($descr)){echo $descr;}?>" required="required">
 												</div>
 											</div>
-																						
+
 										</div>
-										
+
 										<div class="row">
 											<div class="col-md-12">
 												<button type="submit" class="btn btn-success mr-2" formaction="fc/fc_add_pembelian.php" ><i class="fa fa-paper-plane"></i> Submit</button>
 											</div>
 										</div>
-										
-										
+
+
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-				
+
 				<div class="row">
                     <div class="col-12">
                         <div class="card card-body">
 							<div class="col-sm-12 col-xs-12">
-								
-								<div class="table-responsive">									
+
+								<div class="table-responsive">
 									<table class="table table-sm table-striped table-hover table-bordered" id="data-table1" style="color:black;">
 										<thead>
 											<tr>
@@ -275,7 +275,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<th>Item Description</th>
 												<th>Unit</th>
 												<th class="text-right">Qty</th>
-												<?php 
+												<?php
 												    if($_SESSION["iss21"]["position"]=="Gudang"){
 												    }else{
 												        ?>
@@ -283,13 +283,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												        <th class='text-right'>Subtotal</th>
 												        <?php
 												    }
-												?> 
+												?>
 												<th>Note</th>
 												<th class="text-center">Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<?php											
+											<?php
 											$count=0;
 											$no=0;
 											$Qbranch=$_SESSION["iss21"]["branch"];
@@ -300,7 +300,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												while($row = mysqli_fetch_assoc($result))
 												{
 													$no++;
-													$branch2=$row["branch"];	
+													$branch2=$row["branch"];
 													$faktur2=$row["faktur"];
 													$tanggal2=$row["tanggal"];
 													$tanggal2=date('Y-m-d',strtotime($tanggal2));
@@ -314,7 +314,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													$harga_beli2=$row["harga_beli"];
 													$descr2=$row["descr"];
 													$id2=$row["id"];
-													
+
 													echo"
 														<tr>
 															<td>$no</td>
@@ -339,32 +339,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 															</td>
 														</tr>
 													";
-												}												
-											}											
-											?>                                      
+												}
+											}
+											?>
 										</tbody>
 									</table>
 								</div>
-								
-								
-								
-								
-                            
-								
-								
+
+
+
+
+
+
+
 							</div>
 						</div>
 					</div>
-				
-							
+
+
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
             </div>
-		
-		
-		
-		
+
+
+
+
 		<!--End Content-->
 
         <?php include("inc/footer_details.php");?>
@@ -373,7 +373,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/jquery.autocomplete.min.js"></script>
 	<script src="js/datatables/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.responsive.min.js"></script>	
+	<script src="js/dataTables.responsive.min.js"></script>
 	<script type="text/javascript">
 		$('#data-table').DataTable({
 			"responsive": true,
@@ -382,7 +382,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			"order": [[ 0, 'asc' ],]
 		});
 	</script>
-	
+
 	<script type="text/javascript">
 		$("#supplier").autocomplete({
 			serviceUrl: "autocomplete_supplier.php",
@@ -401,10 +401,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$('#contact').val(result.contact);
 				$('#kode_supplier').val(result.kode);
 				document.getElementById("barang").focus();
-			}, "json");	
-			
+			}, "json");
+
 		}
-		
+
 		$("#barang").autocomplete({
 			serviceUrl: "autocomplete_barcode.php",
 			dataType: "JSON",
@@ -424,14 +424,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$('#satuan').val(result.satuan);
 				$('#harga_beli').val(result.harga_beli);
 				document.getElementById("qty").focus();
-			}, "json");	
-			
+			}, "json");
+
 		}
-		
+
 	</script>
     <?php include("inc/js_bawah.php");?>
-	
-	
+
+
 </body>
 </html>
 
