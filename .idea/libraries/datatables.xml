@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="datatables">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/js/datatables.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
